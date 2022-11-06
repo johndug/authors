@@ -1,4 +1,4 @@
-Author Project
+[[Author Project]]
 
 Setup:
 git clone the branch to your local machine:
