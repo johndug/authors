@@ -135,9 +135,9 @@ class AuthorController extends Controller
         $author->surname = $surname;
         $author->save();
 
-        return $author;
+        return  new AuthorCollection($author);
     }
-    
+
     public function getAuthor(Request $request)
     {
         $id = $request->query("id");

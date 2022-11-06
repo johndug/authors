@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\AuthorBook;
 use Illuminate\Http\Request;
+use App\Http\Resources\BookCollection;
 use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
@@ -159,21 +160,22 @@ class BookController extends Controller
     }
 
     // api
-
     public function getBooks(Request $request)
     {
         $id = $request->query("author_id");
 
         if($id)
         {
-            return Book::select("books.*")
+            $book = Book::select("books.*")
                         ->join("author_books", "author_books.book_id", "books.id")
                         ->join("authors", "authors.id", "author_books.author_id")
                         ->where("authors.id", $id)
                         ->get();
         } else
         {
-            return Book::all();
+            $book = Book::all();
         }
+
+        return new BookCollection($book);
     }
 }
