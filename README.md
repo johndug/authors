@@ -1,6 +1,7 @@
-[[Author Project]]
+# Author Project
 
-Setup:
+### Setup:
+
 git clone the branch to your local machine:
 git clone git@github.com:johndug/authors.git
 
@@ -11,13 +12,15 @@ navigate in your terminal to the directory for the new project and enter the fol
 
 php artisan migrate --seed
 
+If you want more author and books increase the $number in the DatabaseSeeder
+
 Create a local server by entering the following
 
 php artisan serve
 
 In the browser navigate to the new project server
 
-Book
+### Book
 
 It will take you to the /books page where it lists the Book titles, year of release, dedscription and author\s
 
@@ -27,7 +30,7 @@ Click edit below any one of the books already added and edit the title, year, de
 
 Click delete it will warn you of this deletion and on confirmation it will remove the book
 
-Author
+### Author
 
 Navigate the the /authors where is lists the authors with books that they have written
 
@@ -37,7 +40,7 @@ Click edit below any one of the authors already added and edit the name and surn
 
 Click delete it will warn you of this deletion and on confirmation it will remove the author
 
-API
+### API
 
 GET /api/getBooks: gets all books saved in the database
 
