@@ -30,23 +30,6 @@ class BookController extends Controller
         return view('books', ['books' => Book::all()]);
     }
 
-    public function getBooks(Request $request)
-    {
-        $author = $request->query("author");
-
-        if($author)
-        {
-            return Book::select("books.*")
-                        ->join("author_books", "author_books.book_id", "books.id")
-                        ->join("authors", "authors.id", "author_books.author_id")
-                        ->where("authors.id", $author)
-                        ->get();
-        } else
-        {
-            return Book::all();
-        }
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -173,5 +156,24 @@ class BookController extends Controller
         $book->delete();
 
         return redirect('/books');
+    }
+
+    // api
+
+    public function getBooks(Request $request)
+    {
+        $id = $request->query("author_id");
+
+        if($id)
+        {
+            return Book::select("books.*")
+                        ->join("author_books", "author_books.book_id", "books.id")
+                        ->join("authors", "authors.id", "author_books.author_id")
+                        ->where("authors.id", $id)
+                        ->get();
+        } else
+        {
+            return Book::all();
+        }
     }
 }

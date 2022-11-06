@@ -59,21 +59,6 @@ class AuthorController extends Controller
         return redirect('/authors');
     }
 
-    public function createAuthor(Request $request)
-    {
-        $this->isValid($request);
-        $name = $request->input("name");
-        $surname = $request->input("surname");
-
-        //
-        $author = new Author();
-        $author->name = $name;
-        $author->surname = $surname;
-        $author->save();
-
-        return $author;
-    }
-
     /**
      * Display the specified resource.
      *
@@ -138,6 +123,21 @@ class AuthorController extends Controller
     }
 
     // api
+    public function createAuthor(Request $request)
+    {
+        $this->isValid($request);
+        $name = $request->input("name");
+        $surname = $request->input("surname");
+
+        //
+        $author = new Author();
+        $author->name = $name;
+        $author->surname = $surname;
+        $author->save();
+
+        return $author;
+    }
+    
     public function getAuthor(Request $request)
     {
         $id = $request->query("id");
