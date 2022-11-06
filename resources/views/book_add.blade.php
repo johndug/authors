@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Add Book</title>
+        <title>Book - @if(empty($book->id)) Add @else Edit @endif</title>
     </head>
     <body>
         @if($errors->any())
@@ -31,7 +31,7 @@
                 </select>
             </div>
             <div>
-                <button type="submit">Create</button>
+                <button type="submit">Submit</button>  <button type="button" onclick="location.href = '{{ url('/books') }}';">Cancel</button>
             </div>
         </form>
     </body>

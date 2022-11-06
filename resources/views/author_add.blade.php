@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Add Author</title>
+        <title>Author - @if(empty($author->id)) Add @else Edit @endif</title>
     </head>
     <body>
     @if($errors->any())
@@ -20,7 +20,7 @@
                 <input type="text" name="surname" value="{{ $author->surname }}">
             </div>
             <div>
-                <button type="submit">Create</button>
+                <button type="submit">Submit</button>  <button type="button" onclick="location.href = '{{ url('/authors') }}';">Cancel</button>
             </div>
         </form>
     </body>
